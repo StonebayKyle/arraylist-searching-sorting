@@ -18,26 +18,23 @@ public class Sort {
     }
     
     public static void selectionSort(ArrayList<String> list) {
-        String minStr = list.get(0);
+        String minStr;
         for (int i = 0; i < list.size(); i++) {
+            minStr = list.get(i);
             int swap = getMinIndex(list, minStr, i);
             System.out.println("Swap: " + swap);
-            if (swap != -1) {
-                minStr = list.get(swap);
-    
-                String temp = list.get(i);
-                list.set(i,minStr);
-                list.set(swap,temp);
-            }
+
+            list.set(i,list.get(swap));
+            list.set(swap,minStr);
         }
     }
 
     private static int getMinIndex(ArrayList<String> list, String minStr, int minIndex) {
-        String currentMinStr = "";
-        int currentMinIndex = -1;
+        String currentMinStr = minStr;
+        int currentMinIndex = minIndex;
 
         for (int i = minIndex+1; i < list.size(); i++) {
-            if (list.get(i).compareTo(currentMinStr) < 0 && minStr.compareTo(currentMinStr) > 0) {
+            if (currentMinStr.compareTo(list.get(i)) > 0) {
                 currentMinStr = list.get(i);
                 currentMinIndex = i;
             }
