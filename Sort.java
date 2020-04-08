@@ -13,7 +13,8 @@ public class Sort {
         Collections.shuffle(list); // shuffle list
 
         // selectionSort(list);
-        insertionSort(list);
+        // insertionSort(list);
+        bubbleSort(list);
 
         System.out.println(Arrays.toString(list.toArray()));
     }
@@ -51,6 +52,22 @@ public class Sort {
                 String temp = list.get(j-1);
                 list.set(j-1,list.get(j));
                 list.set(j,temp);
+            }
+        }
+    }
+
+    public static void bubbleSort(ArrayList<String> list) {
+
+        int swapCount = -1;
+        while (swapCount != 0) {
+            swapCount = 0;
+            for (int i = 0; i < list.size()-1; i++) {
+                if (list.get(i).compareTo(list.get(i+1)) > 0) {
+                    swapCount++;
+                    String temp = list.get(i);
+                    list.set(i,list.get(i+1));
+                    list.set(i+1,temp);
+                }
             }
         }
     }
