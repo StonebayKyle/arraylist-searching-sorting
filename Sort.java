@@ -12,7 +12,8 @@ public class Sort {
 
         Collections.shuffle(list); // shuffle list
 
-        selectionSort(list);
+        // selectionSort(list);
+        insertionSort(list);
 
         System.out.println(Arrays.toString(list.toArray()));
     }
@@ -43,5 +44,14 @@ public class Sort {
         return currentMinIndex;
     }
 
-    
+    public static void insertionSort(ArrayList<String> list) {
+        for (int i = 1; i < list.size(); i++) { // all indexes
+            for (int j = i; j > 0 && list.get(j-1).compareTo(list.get(j)) > 0; j--) { // repeat downward while out of order
+                //swap
+                String temp = list.get(j-1);
+                list.set(j-1,list.get(j));
+                list.set(j,temp);
+            }
+        }
+    }
 }
